@@ -1,0 +1,5 @@
+realtor-data.zip.csv
+venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
