@@ -99,10 +99,10 @@ We trained Linear Regression and Decision Tree Regressor with default parameters
 
 | Model | MAE | RMSE | R² |
 |-------|-----|------|----|
-| Linear Regression | — | — | 0.18 |
-| Decision Tree | — | — | 0.11 |
+| Linear Regression | 275,931 | 1,325,023 | 0.184 |
+| Decision Tree | 231,725 | 1,391,787 | 0.100 |
 
-Linear Regression edged out the Decision Tree despite the non-linear nature of the data. The reason is that with default parameters the Decision Tree grows extremely deep on 2.2M rows, memorizing the training data but failing to generalize — classic overfitting. Linear Regression fits a stable global pattern even if it misses the non-linear effects.
+The metrics show a mixed result: Decision Tree gets lower MAE, but Linear Regression gets better RMSE and R². This pattern usually means the tree helps on many typical cases but makes larger mistakes on the extreme-value tail, which hurts RMSE and overall explained variance. With default parameters on 2.2M rows, the Decision Tree likely overfits and generalizes poorly on outliers.
 
 Both R² scores are low overall, which isn't surprising given the state of the raw data. The extreme price outliers (up to $2 billion) completely throw off both models — a handful of bad records contribute massively to the error. With outlier capping and a log transform on price, both models would perform significantly better. With default parameters on unprocessed data, these numbers are about what you'd expect.
 
